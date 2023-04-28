@@ -16,7 +16,7 @@ function Game() {
   const [input, setInput] = React.useState('')
   const [guesses, setGuesses] = React.useState([])
 
-  console.info(guesses);
+  console.info('array ', guesses);
 
   return (
     <>

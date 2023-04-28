@@ -1,9 +1,7 @@
 import React from "react";
+import { NUM_OF_GUESSES_ALLOWED as allowedGuesses } from '../../constants'
 
 function GuessInput({ input, setInput, guesses, setGuesses }) {
-
-
-
 
   const handleSubmit = (e) => {
     if (input.length === 0 || input.length !== 5) {
@@ -26,6 +24,7 @@ function GuessInput({ input, setInput, guesses, setGuesses }) {
         id="guess-input"
         type="text"
         maxLength={5}
+        disabled={guesses.length === allowedGuesses}
         value={input}
         onChange={(e) => setInput((e.target.value).toUpperCase())}
       />
