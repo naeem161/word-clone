@@ -1,19 +1,20 @@
 import React from "react";
-import { NUM_OF_GUESSES_ALLOWED as allowedGuesses } from '../../constants'
 
-function GuessInput({ input, setInput, guesses, setGuesses }) {
+function GuessInput({ handleSubmitGuess }) {
+
+  const [tentativeGuess, setTentativeGuess] = React.useState('')
 
   const handleSubmit = (e) => {
-    if (input.length === 0 || input.length !== 5) {
+    if (tentativeGuess.length === 0 || tentativeGuess.length !== 5) {
       e.preventDefault()
       window.alert('Please enter 5 characters !')
       return
     }
 
     e.preventDefault()
-    console.log({ guess: input });
-    setGuesses([...guesses, input])
-    setInput('')
+
+    handleSubmitGuess(tentativeGuess)
+    setTentativeGuess('')
 
   }
 
@@ -24,9 +25,8 @@ function GuessInput({ input, setInput, guesses, setGuesses }) {
         id="guess-input"
         type="text"
         maxLength={5}
-        disabled={guesses.length === allowedGuesses}
-        value={input}
-        onChange={(e) => setInput((e.target.value).toUpperCase())}
+        value={tentativeGuess}
+        onChange={(e) => setTentativeGuess((e.target.value).toUpperCase())}
       />
     </form>
   )
