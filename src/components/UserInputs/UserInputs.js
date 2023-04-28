@@ -1,10 +1,14 @@
 import React from "react";
 
-function UserInputs() {
+function UserInputs({ guesses }) {
   return (
     <div className="guess-results">
-      <p className="guess">FIRST</p>
-      <p className="guess">GUESS</p>
+      {guesses.map((guess, index) => (
+        <p
+          className="guess"
+          key={index}
+        >{guess}</p>
+      ))}
     </div>
   )
 }
